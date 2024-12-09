@@ -29,7 +29,7 @@ namespace CryptoEffectClient.Algorithmes.Realisations
         /// </summary>
         public AlgorithmeFeistel()
         {
-            /*string[] sbox = new string[32];
+            string[] sbox = new string[32];
 
             try
             {
@@ -44,24 +44,52 @@ namespace CryptoEffectClient.Algorithmes.Realisations
             // Initialisera l’attribut sbox en lisant le fichier Sbox.txt et en convertissant chacune  des chaines hexadécimales(”0x...”) en binaire à l’aide d’une méthode codée lors de la section Opérations Binaires.
             AlgorithmeBinaire algoBin = new AlgorithmeBinaire();
 
-            for (int i = 0; i < sbox.Length; i++) 
+            string[] sboxBin = new string[256];
+            int pos = 0;
+
+            for (int i = 0 ; i < sbox.Length; i++) 
             {
-                sbox[i] = algoBin.HexToBin(sbox[i]);
+                for (int j=0; j < sbox[i].Length; j+=9)
+                {
+                    sboxBin[pos] += algoBin.HexToBin(sbox[i].Substring(j, 8));
+                    pos++;
+                }
             }
 
-            this.sbox = sbox;*/
+            this.sbox = sboxBin;
             
         }
 
-
+        /// <summary>
+        /// function pBox qui inverse les positions selon une certaines façon
+        /// </summary>
+        /// <param name="message">message à changer les positions</param>
+        /// <returns>message avec les caractères inversé</returns>
         public string Pbox(string message)
         {
-            throw new NotImplementedException();
+            string messageSortie = "";
+            List<int> pos = [15,6,19,20,28,11,27,16,0,14,22,25,4,17,30,9,1,7,23,13,31,26,2,8,18,12,29,5,21,10,3,24];
+            foreach (int i in pos)
+            {
+                messageSortie+= message[i];
+            }
+            return messageSortie;
+
         }
 
+        /// <summary>
+        /// Méthode de substitution du message (On cherchera dans le tableau de clefs l'équivalent d'un message binaire fourni en paramètre)
+        /// </summary>
+        /// <param name="message">Message à transformer</param>
+        /// <returns>Retourne l'image du message par la SBox (représentation binaire sur 32 bits)</returns>
         public string Sbox(string message)
         {
-            throw new NotImplementedException();
+            string retour = "";
+
+            AlgorithmeBinaire algoBin = new AlgorithmeBinaire();
+            retour = this.sbox[algoBin.BinToInt(message)];
+
+            return retour;
         }
 
         /// <summary>
@@ -88,10 +116,17 @@ namespace CryptoEffectClient.Algorithmes.Realisations
             return messageSortie;
         }
 
-
+        /// <summary>
+        /// réaliser l’addition modulo 2^32
+        /// </summary>
+        /// <param name="nb1"></param>
+        /// <param name="nb2"></param>
+        /// <returns>le resultat</returns>
         public string Add(string nb1,string nb2)
         {
-            throw new NotImplementedException();
+            AlgorithmeBinaire algorithmeBinaire = new AlgorithmeBinaire();
+            uint res = algorithmeBinaire.BinToInt(nb1) + algorithmeBinaire.BinToInt(nb2) % (uint)Math.Pow(2, 32);
+            return algorithmeBinaire.IntToBin(res);
         }
 
         public string CreationClef(string clef, int numTour)
