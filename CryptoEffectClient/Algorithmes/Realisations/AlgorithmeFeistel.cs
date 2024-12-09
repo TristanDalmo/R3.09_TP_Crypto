@@ -126,10 +126,17 @@ namespace CryptoEffectClient.Algorithmes.Realisations
             throw new NotImplementedException();
         }
 
-
+        /// <summary>
+        /// réaliser l’addition modulo 2^32
+        /// </summary>
+        /// <param name="nb1"></param>
+        /// <param name="nb2"></param>
+        /// <returns>le resultat</returns>
         public string Add(string nb1,string nb2)
         {
-            throw new NotImplementedException();
+            AlgorithmeBinaire algorithmeBinaire = new AlgorithmeBinaire();
+            uint res = algorithmeBinaire.BinToInt(nb1) + algorithmeBinaire.BinToInt(nb2) % (uint)Math.Pow(2, 32);
+            return algorithmeBinaire.IntToBin(res);
         }
 
         public string CreationClef(string clef, int numTour)
