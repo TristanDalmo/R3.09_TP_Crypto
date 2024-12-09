@@ -68,38 +68,11 @@ namespace CryptoEffectClient.Algorithmes.Realisations
         public string Pbox(string message)
         {
             string messageSortie = "";
-            messageSortie += message[15];
-            messageSortie += message[6];
-            messageSortie += message[19];
-            messageSortie += message[20];
-            messageSortie += message[28];
-            messageSortie += message[11];
-            messageSortie += message[27];
-            messageSortie += message[16];
-            messageSortie += message[0];
-            messageSortie += message[14];
-            messageSortie += message[22];
-            messageSortie += message[25];
-            messageSortie += message[4];
-            messageSortie += message[17];
-            messageSortie += message[30];
-            messageSortie += message[9];
-            messageSortie += message[1];
-            messageSortie += message[7];
-            messageSortie += message[23];
-            messageSortie += message[13];
-            messageSortie += message[31];
-            messageSortie += message[26];
-            messageSortie += message[2];
-            messageSortie += message[8];
-            messageSortie += message[18];
-            messageSortie += message[12];
-            messageSortie += message[29];
-            messageSortie += message[5];
-            messageSortie += message[21];
-            messageSortie += message[10];
-            messageSortie += message[3];
-            messageSortie += message[24];
+            List<int> pos = [15,6,19,20,28,11,27,16,0,14,22,25,4,17,30,9,1,7,23,13,31,26,2,8,18,12,29,5,21,10,3,24];
+            foreach (int i in pos)
+            {
+                messageSortie+= message[i];
+            }
             return messageSortie;
 
         }
