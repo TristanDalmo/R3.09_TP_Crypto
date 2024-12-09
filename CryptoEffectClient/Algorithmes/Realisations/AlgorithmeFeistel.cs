@@ -142,7 +142,12 @@ namespace CryptoEffectClient.Algorithmes.Realisations
 
             return retour;
         }
-
+        /// <summary>
+        /// Réalise un pbox puis un sBox sur les 8 premiers bits, un eBox sur les 24 derniers bits, on chiffre avec la transposition le ebox puis on additionne avec un module 2^32
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="clef"></param>
+        /// <returns></returns>
         public string F(string message, string clef)
         {
             string messagePBox=Pbox(message);
