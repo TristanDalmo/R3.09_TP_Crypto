@@ -29,7 +29,7 @@ namespace CryptoEffectClient.Algorithmes.Realisations
         /// </summary>
         public AlgorithmeFeistel()
         {
-            string[] sbox = new string[32];
+            /*string[] sbox = new string[32];
 
             try
             {
@@ -49,7 +49,7 @@ namespace CryptoEffectClient.Algorithmes.Realisations
                 sbox[i] = algoBin.HexToBin(sbox[i]);
             }
 
-            this.sbox = sbox;
+            this.sbox = sbox;*/
             
         }
 
@@ -64,9 +64,28 @@ namespace CryptoEffectClient.Algorithmes.Realisations
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Méthode faisant le Ebox (double un caractère sur 3)
+        /// </summary>
+        /// <param name="message">de type string, c'est le message en binaire</param>
+        /// <returns>de type string, c'est le message avec les bits doublés quand il le faut</returns>
         public string Ebox(string message)
         {
-            throw new NotImplementedException();
+            string messageSortie = "";
+            int taille = 0;
+            int compteur = 2;
+            while(taille<message.Length)
+            {
+                compteur++;
+                messageSortie += message[taille];
+                if (compteur >= 3) //double un bit sur 3s
+                {
+                    messageSortie += message[taille];
+                    compteur = 0;
+                }
+                taille++;
+            }
+            return messageSortie;
         }
 
 
