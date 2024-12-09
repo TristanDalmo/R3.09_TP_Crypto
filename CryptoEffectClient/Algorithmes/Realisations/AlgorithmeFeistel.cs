@@ -44,9 +44,16 @@ namespace CryptoEffectClient.Algorithmes.Realisations
             // Initialisera l’attribut sbox en lisant le fichier Sbox.txt et en convertissant chacune  des chaines hexadécimales(”0x...”) en binaire à l’aide d’une méthode codée lors de la section Opérations Binaires.
             AlgorithmeBinaire algoBin = new AlgorithmeBinaire();
 
-            for (int i = 0; i < sbox.Length; i++) 
+            string[] sboxBin = new string[256];
+            int pos = 0;
+
+            for (int i = 0 ; i < sbox.Length; i++) 
             {
-                sbox[i] = algoBin.HexToBin(sbox[i]);
+                for (int j=0; j < sbox[i].Length; j+=9)
+                {
+                    sboxBin[pos] += algoBin.HexToBin(sbox[i].Substring(j, 8));
+                    pos++;
+                }
             }
 
             this.sbox = sbox;
@@ -59,9 +66,21 @@ namespace CryptoEffectClient.Algorithmes.Realisations
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Méthode de substitution du message
+        /// </summary>
+        /// <param name="message">Message à transformer</param>
+        /// <returns>Retourne l'image du message par la SBox (représentation binaire sur 32 bits)</returns>
         public string Sbox(string message)
         {
-            throw new NotImplementedException();
+            string retour = "";
+
+            AlgorithmeBinaire algoBin = new AlgorithmeBinaire();
+            string messageBin = algoBin.IntToBin(Convert.ToUInt32(message));
+
+            retour += algoBin.Xor(retour, sbox[0]);
+
+            return retour;
         }
 
         public string Ebox(string message)
