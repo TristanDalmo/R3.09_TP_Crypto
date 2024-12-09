@@ -124,9 +124,23 @@ namespace CryptoEffectClient.Algorithmes.Realisations
             return algorithmeBinaire.IntToBin(res);
         }
 
+        /// <summary>
+        /// Méthode de création d'une clef à partir du numéro de tour
+        /// </summary>
+        /// <param name="clef">Clef à transformer</param>
+        /// <param name="numTour">Numéro du tour</param>
+        /// <returns>Retourne une clef partielle</returns>
         public string CreationClef(string clef, int numTour)
         {
-            throw new NotImplementedException();
+            string retour = "";
+
+            AlgorithmeCesar algoCesar = new AlgorithmeCesar();
+            AlgorithmeVigenere algoVig = new AlgorithmeVigenere();
+
+            retour = algoCesar.Chiffrer(clef, Convert.ToString(numTour));
+            retour = algoVig.Chiffrer(retour, clef);
+
+            return retour;
         }
 
         public string F(string message, string clef)
