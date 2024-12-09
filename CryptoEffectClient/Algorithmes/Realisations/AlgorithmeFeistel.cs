@@ -84,17 +84,31 @@ namespace CryptoEffectClient.Algorithmes.Realisations
         /// <returns>Retourne l'image du message par la SBox (représentation binaire sur 32 bits)</returns>
         public string Sbox(string message)
         {
-            string retour = "";
-
-            AlgorithmeBinaire algoBin = new AlgorithmeBinaire();
-            retour = this.sbox[algoBin.BinToInt(message)];
-
-            return retour;
+            return this.sbox[(new AlgorithmeBinaire()).BinToInt(message)];
         }
 
+        /// <summary>
+        /// Méthode faisant le Ebox (double un caractère sur 3)
+        /// </summary>
+        /// <param name="message">de type string, c'est le message en binaire</param>
+        /// <returns>de type string, c'est le message avec les bits doublés quand il le faut</returns>
         public string Ebox(string message)
         {
-            throw new NotImplementedException();
+            string messageSortie = "";
+            int taille = 0;
+            int compteur = 2;
+            while(taille<message.Length)
+            {
+                compteur++;
+                messageSortie += message[taille];
+                if (compteur >= 3) //double un bit sur 3s
+                {
+                    messageSortie += message[taille];
+                    compteur = 0;
+                }
+                taille++;
+            }
+            return messageSortie;
         }
 
         /// <summary>
