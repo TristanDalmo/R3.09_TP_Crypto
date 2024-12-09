@@ -56,7 +56,7 @@ namespace CryptoEffectClient.Algorithmes.Realisations
                 }
             }
 
-            this.sbox = sbox;
+            this.sbox = sboxBin;
             
         }
 
@@ -78,7 +78,7 @@ namespace CryptoEffectClient.Algorithmes.Realisations
         }
 
         /// <summary>
-        /// Méthode de substitution du message
+        /// Méthode de substitution du message (On cherchera dans le tableau de clefs l'équivalent d'un message binaire fourni en paramètre)
         /// </summary>
         /// <param name="message">Message à transformer</param>
         /// <returns>Retourne l'image du message par la SBox (représentation binaire sur 32 bits)</returns>
@@ -87,9 +87,7 @@ namespace CryptoEffectClient.Algorithmes.Realisations
             string retour = "";
 
             AlgorithmeBinaire algoBin = new AlgorithmeBinaire();
-            string messageBin = algoBin.IntToBin(Convert.ToUInt32(message));
-
-            retour += algoBin.Xor(retour, sbox[0]);
+            retour = this.sbox[algoBin.BinToInt(message)];
 
             return retour;
         }
