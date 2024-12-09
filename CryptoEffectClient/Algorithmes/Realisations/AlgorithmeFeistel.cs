@@ -68,6 +68,8 @@ namespace CryptoEffectClient.Algorithmes.Realisations
         public string Pbox(string message)
         {
             string messageSortie = "";
+            
+
             messageSortie += message[15];
             messageSortie += message[6];
             messageSortie += message[19];
@@ -111,12 +113,7 @@ namespace CryptoEffectClient.Algorithmes.Realisations
         /// <returns>Retourne l'image du message par la SBox (représentation binaire sur 32 bits)</returns>
         public string Sbox(string message)
         {
-            string retour = "";
-
-            AlgorithmeBinaire algoBin = new AlgorithmeBinaire();
-            retour = this.sbox[algoBin.BinToInt(message)];
-
-            return retour;
+            return this.sbox[(new AlgorithmeBinaire()).BinToInt(message)];
         }
 
         public string Ebox(string message)
