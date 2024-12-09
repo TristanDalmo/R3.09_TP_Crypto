@@ -145,9 +145,10 @@ namespace CryptoEffectClient.Challenges
                     challenge = new ChallengeFTL3();
                     break;
 
-                case "FTL4":
-                    challenge = new ChallengeFTL4();
+                case "FTL5":
+                    challenge = new ChallengeFTL5();
                     break;
+
 
                 #endregion
 

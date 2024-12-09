@@ -120,7 +120,7 @@ namespace CryptoEffectClient.Algorithmes.Realisations
         public string Add(string nb1,string nb2)
         {
             AlgorithmeBinaire algorithmeBinaire = new AlgorithmeBinaire();
-            uint res = (algorithmeBinaire.BinToInt(nb1) + algorithmeBinaire.BinToInt(nb2)) % (uint)Math.Pow(2, 32);
+            uint res = algorithmeBinaire.BinToInt(nb1) + algorithmeBinaire.BinToInt(nb2);
             return algorithmeBinaire.IntToBin(res);
         }
 
@@ -132,8 +132,8 @@ namespace CryptoEffectClient.Algorithmes.Realisations
         public string F(string message, string clef)
         {
             string messagePBox=Pbox(message);
-            string messageSBox=Sbox(messagePBox.Substring(0, 7));
-            string messageEBox=Ebox(messagePBox.Substring(8, 31));
+            string messageSBox=Sbox(messagePBox.Substring(0, 8));
+            string messageEBox=Ebox(messagePBox.Substring(8, 24));
             AlgorithmeTransposition algorithmeTransposition = new AlgorithmeTransposition();
             messageEBox = algorithmeTransposition.Chiffrer(messageEBox, clef);
             return Add(messageSBox, messageEBox);
