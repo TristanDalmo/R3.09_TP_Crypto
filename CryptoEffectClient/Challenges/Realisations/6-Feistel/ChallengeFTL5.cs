@@ -32,7 +32,7 @@ namespace CryptoEffectClient.Challenges.Realisations._6_Feistel
                 // On reçoit le clé
                 clef = connexion.RecevoirMessage();
 
-                // On envoie la clef partielle générée
+                // On envoie du resultat de la fonction f
                 connexion.EnvoyerMessage(algorithme.F(message,clef));
 
                 // On récupère de nouveau le message
