@@ -60,47 +60,46 @@ namespace CryptoEffectClient.Algorithmes.Realisations
             
         }
 
-
+        /// <summary>
+        /// function pBox qui inverse les positions selon une certaines façon
+        /// </summary>
+        /// <param name="message">message à changer les positions</param>
+        /// <returns>message avec les caractères inversé</returns>
         public string Pbox(string message)
         {
             string messageSortie = "";
-            List<char> sortie = new List<char>();
-            sortie.Add(message[15]);
-            sortie.Add(message[6]);
-            sortie.Add(message[19]);
-            sortie.Add(message[20]);
-            sortie.Add(message[28]);
-            sortie.Add(message[11]);
-            sortie.Add(message[27]);
-            sortie.Add(message[16]);
-            sortie.Add(message[0]);
-            sortie.Add(message[14]);
-            sortie.Add(message[22]);
-            sortie.Add(message[25]);
-            sortie.Add(message[4]);
-            sortie.Add(message[17]);
-            sortie.Add(message[30]);
-            sortie.Add(message[9]);
-            sortie.Add(message[1]);
-            sortie.Add(message[7]);//l18
-            sortie.Add(message[23]);
-            sortie.Add(message[13]);
-            sortie.Add(message[31]);
-            sortie.Add(message[26]);//22
-            sortie.Add(message[2]);
-            sortie.Add(message[8]);
-            sortie.Add(message[18]);
-            sortie.Add(message[12]);//26
-            sortie.Add(message[29]);
-            sortie.Add(message[5]);
-            sortie.Add(message[21]);//29
-            sortie.Add(message[10]);
-            sortie.Add(message[3]);
-            sortie.Add(message[24]);
-            foreach (char c  in sortie)
-            {
-                messageSortie += c;
-            }
+            messageSortie += message[15];
+            messageSortie += message[6];
+            messageSortie += message[19];
+            messageSortie += message[20];
+            messageSortie += message[28];
+            messageSortie += message[11];
+            messageSortie += message[27];
+            messageSortie += message[16];
+            messageSortie += message[0];
+            messageSortie += message[14];
+            messageSortie += message[22];
+            messageSortie += message[25];
+            messageSortie += message[4];
+            messageSortie += message[17];
+            messageSortie += message[30];
+            messageSortie += message[9];
+            messageSortie += message[1];
+            messageSortie += message[7];
+            messageSortie += message[23];
+            messageSortie += message[13];
+            messageSortie += message[31];
+            messageSortie += message[26];
+            messageSortie += message[2];
+            messageSortie += message[8];
+            messageSortie += message[18];
+            messageSortie += message[12];
+            messageSortie += message[29];
+            messageSortie += message[5];
+            messageSortie += message[21];
+            messageSortie += message[10];
+            messageSortie += message[3];
+            messageSortie += message[24];
             return messageSortie;
 
         }
