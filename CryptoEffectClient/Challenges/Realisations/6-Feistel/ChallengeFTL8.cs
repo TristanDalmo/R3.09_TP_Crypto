@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 namespace CryptoEffectClient.Challenges.Realisations._6_Feistel
 {
     /// <summary>
-    /// Challenge 6 : Chiffrement d'un message <br/>
-    /// Code : FTL6
+    /// Challenge 8 : Bonus <br/>
+    /// Code : FTL8
     /// </summary>
-    public class ChallengeFTL6 : IChallenge
+    public class ChallengeFTL8 : IChallenge
     {
         public void Executer()
         {
@@ -20,26 +20,21 @@ namespace CryptoEffectClient.Challenges.Realisations._6_Feistel
             Connexion connexion = Connexion.Instance;
 
             // On crée une variable stockant la clef et le numéro du tour
-            string clef;
             string message;
 
-            // On crée une variable contenant une instance de l'algorithme de Feistel
-            AlgorithmeFeistel algorithme = new AlgorithmeFeistel();
-
+            // On chiffre le message avec la clé
+            connexion.EnvoyerMessage("TRUE");
             // Tant que l'on a pas atteint la fin, on continue de recevoir et d'envoyer des messages
             while ((message = connexion.RecevoirMessage()) != "FIN")
             {
-                // On reçoit le clé
-                clef = connexion.RecevoirMessage();
-
                 // On chiffre le message avec la clé
-                connexion.EnvoyerMessage(algorithme.Chiffrer(message, clef));
+                connexion.EnvoyerMessage("TRUE");
 
                 // On récupère de nouveau le message
-                clef = connexion.RecevoirMessage();
+                message = connexion.RecevoirMessage();
 
                 // Si le résultat est ok, on demande un nouveau message, sinon on coupe la connexion
-                if (clef != "OK")
+                if (message != "OK")
                 {
                     break;
                 }

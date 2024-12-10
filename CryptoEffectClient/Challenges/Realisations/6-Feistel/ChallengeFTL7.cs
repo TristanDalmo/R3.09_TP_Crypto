@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 namespace CryptoEffectClient.Challenges.Realisations._6_Feistel
 {
     /// <summary>
-    /// Challenge 6 : Chiffrement d'un message <br/>
-    /// Code : FTL6
+    /// Challenge 7 : Déchiffrement d'un message <br/>
+    /// Code : FTL7
     /// </summary>
-    public class ChallengeFTL6 : IChallenge
+    public class ChallengeFTL7 : IChallenge
     {
         public void Executer()
         {
@@ -33,7 +33,7 @@ namespace CryptoEffectClient.Challenges.Realisations._6_Feistel
                 clef = connexion.RecevoirMessage();
 
                 // On chiffre le message avec la clé
-                connexion.EnvoyerMessage(algorithme.Chiffrer(message, clef));
+                connexion.EnvoyerMessage(algorithme.Dechiffrer(message, clef));
 
                 // On récupère de nouveau le message
                 clef = connexion.RecevoirMessage();

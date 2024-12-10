@@ -16,12 +16,26 @@ namespace CryptoEffectClient.Algorithmes.Realisations
 
         public string Chiffrer(string message, string cle)
         {
-            throw new NotImplementedException();
+            string retour = message;
+
+            for (int i = 1; i<3;i++)
+            {
+                retour = TourDeChiffrement(retour, cle, i);
+            }
+
+            return retour;
         }
 
         public string Dechiffrer(string message, string cle)
         {
-            throw new NotImplementedException();
+            string retour = message;
+
+            for (int i = 2; i > 0; i--)
+            {
+                retour = TourDeDechiffrement(retour, cle, i);
+            }
+
+            return retour;
         }
 
         /// <summary>
@@ -158,14 +172,39 @@ namespace CryptoEffectClient.Algorithmes.Realisations
             return Add(messageSBox, messageEBox);
         }
 
+        /// <summary>
+        /// Représente un tour de chiffrement de l'algorithme
+        /// </summary>
+        /// <param name="message">Message à l'étape i</param>
+        /// <param name="clef">Clef de l'algorithme</param>
+        /// <param name="numTour">Numéro du tour</param>
+        /// <returns>Retourne le message à la fin du tour</returns>
         public string TourDeChiffrement(string message, string clef, int numTour)
         {
-            throw new NotImplementedException();
+            string message1 = message.Substring(0, 32);
+            string message2 = message.Substring(32);
+
+            message2 = (new AlgorithmeBinaire()).Xor(F(message1,CreationClef(clef,numTour)), message2);
+
+            return message2 + message1;
+
         }
 
+        /// <summary>
+        /// Représente un tour de déchiffrement de l'algorithme
+        /// </summary>
+        /// <param name="message">Message à l'étape i</param>
+        /// <param name="clef">Clef de l'algorithme</param>
+        /// <param name="numTour">Numéro du tour</param>
+        /// <returns>Retourne le message déchiffré à l'étape i</returns>
         public string TourDeDechiffrement(string message, string clef, int numTour)
         {
-            throw new NotImplementedException();
+            string message2 = message.Substring(0, 32);
+            string message1 = message.Substring(32);
+
+            message2 = (new AlgorithmeBinaire()).Xor(F(message1,CreationClef(clef,numTour)), message2);
+
+            return message1 + message2;
         }
 
 
