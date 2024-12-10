@@ -21,7 +21,7 @@ namespace CryptoEffectClient.Algorithmes.FichiersBinaires
         public EnregistreurFichierBinaire(string nom)
         {
             this.nom = nom;
-            this.stream = File.Create(@"Resources\" + this.nom);
+            this.stream = File.Create(@"Ressources\" + this.nom);
         }
 
         /// <summary>

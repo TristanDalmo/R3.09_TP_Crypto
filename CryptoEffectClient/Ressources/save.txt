@@ -1,0 +1,35 @@
+[Communication]
+	COM1 : True
+	COM2 : True
+[Algorithmes de CÃ©sar]
+	CES1 : True
+	CES2 : True
+	CES3 : True
+	CES4 : True
+	CES5 : True
+	CES6 : True
+[Algorithme de VigenÃ¨re]
+	VIG1 : True
+	VIG2 : True
+	VIG3 : True
+	VIG4 : True
+[OpÃ©rations binaires]
+	BIN1 : True
+	BIN2 : True
+	BIN3 : True
+	BIN4 : True
+	BIN5 : True
+[Transposition]
+	TRA1 : True
+	TRA2 : True
+	TRA3 : True
+	TRA4 : True
+[Algorithme de Feistel]
+	FTL1 : True
+	FTL2 : True
+	FTL3 : True
+	FTL4 : True
+	FTL5 : True
+	FTL6 : True
+	FTL7 : True
+	FTL8 : True

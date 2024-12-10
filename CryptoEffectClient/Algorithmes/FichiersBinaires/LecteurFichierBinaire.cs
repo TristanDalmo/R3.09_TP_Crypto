@@ -21,7 +21,7 @@ namespace CryptoEffectClient.Algorithmes.FichiersBinaires
         public LecteurFichierBinaire(string nom)
         {
             this.nom = nom;
-            this.stream = new FileStream(@"Resources\"+this.nom, FileMode.Open, FileAccess.Read);
+            this.stream = new FileStream(@"Ressources\"+this.nom, FileMode.Open, FileAccess.Read);
         }
 
         /// <summary>
